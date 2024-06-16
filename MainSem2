@@ -1,0 +1,51 @@
+import java.io.*;
+import java.util.Scanner;
+import java.util.StringTokenizer;
+import java.io.PrintWriter;//write to a file;
+import java.io.FileReader;
+public class ExamMain
+{
+    public static void main(String []args)
+    {
+        Examination exam[] = new Examination[10];
+        try{
+            FileReader reader = new FileReader("examination.txt");
+            Scanner input = new Scanner(reader);
+            Scanner scan = new Scanner(System.in);
+            StringTokenizer st;
+            int i = 0;
+            while (input.hasNextLine()){
+                String line = input.nextLine();
+                st = new StringTokenizer(line, " : ");
+                String code = st.nextToken();
+                String name = st.nextToken();
+                int duration = Integer.parseInt(st.nextToken());
+                
+                System.out.println("\nO-Online or P-Physical");
+                char type = input.next().charAt(0);input.nextLine();
+                
+                if(type == 'O')
+                {
+                    System.out.println("\nEnter Platform : ");
+                    String platform = scan.nextLine();
+                    System.out.println("Enter password : ");
+                    int password = scan.nextInt();
+                    exam[i] = new Online(platform, password, code, name, duration);
+                }
+                else{
+                    System.out.println("\nEnter venue : ");
+                    String venue = scan.nextLine();
+                    System.out.println("\nEnter Dress Code : ");
+                    String dressCode = scan.nextLine();
+                    exam[i] = new Physical(venue, dressCode, code, name, duration);
+                }
+                i++;
+            }
+            
+        }
+        catch(Exception e){
+            
+            System.out.println("Error!" + e);
+        }
+    }
+}
