@@ -1,3 +1,137 @@
+class Examination
+{
+    protected String courseCode;
+    protected String courseName;
+    protected int duration;
+    
+    public Examination(){}
+    public Examination(String courseCode, String courseName, int duration)
+    {
+        this.courseCode = courseCode;
+        this.courseName = courseName;
+        this.duration = duration;
+    }
+    
+    public void setCourseCode(String courseCode)
+    {
+        this.courseCode = courseCode;
+    }
+    public void setCourseName(String courseName)
+    {
+        this.courseName = courseName;
+    }
+    public void setDuration(int duration)
+    {
+        this.duration = duration;
+    }
+    
+    public String getCourseCode()
+    {
+        return courseCode;
+    }
+    public String courseName()
+    {
+        return courseName;
+    }
+    public int getDuration()
+    {
+        return duration;
+    }
+    public String toString()
+    {
+        return "\nCourse Code : " + courseCode + "\nCourse Name : " + courseName + "\nDuration : " + duration;
+    }
+    public String saveToFile()
+    {
+        return courseCode +";" + courseName + ";" + duration + ";";
+    }
+}
+class Online extends Examination
+{
+    private String platform;
+    private int password;
+    public Online(){}
+    public Online(String platform ,int password, String courseCode, String courseName, int duration)
+    {
+        super(courseCode, courseName, duration);
+        this.platform = platform;
+        this.password = password;
+        
+    }
+    
+    public void setPlatform(String platform)
+    {
+        this.platform = platform;
+    }
+    public void setPassword(int password)
+    {
+        this.password = password;
+    }
+    
+    public String getPlatform()
+    {
+        return platform;
+    }
+    public int getPassword()
+    {
+        return password;
+    }
+    
+    public String toString()
+    {
+        return super.toString() +
+        "\nPlatform : " + platform + "\nPassword : " + password;
+    }
+    public String saveToFile()
+    {
+        return super.saveToFile() +  platform +";" + password + ";";
+    }
+}
+class Physical extends Examination
+{
+    private String venue;
+    private String dressCode;
+    
+    public Physical(){}
+    
+    public Physical(String venue, String dressCode, String courseCode, String courseName, int duration)
+    {
+        super(courseCode, courseName, duration);
+        this.venue = venue;
+        this.dressCode = dressCode;
+    }
+    
+    public void setVenue(String venue)
+    {
+        this.venue = venue;
+    }
+    public void setDressCode(String dressCode)
+    {
+        this.dressCode = dressCode;
+    }
+    
+    public String getVenue()
+    {
+        return venue;
+    }
+    public String getDressCOde()
+    {
+        return dressCode;
+    }
+    
+    public String toString()
+    {
+        return super.toString() +
+        "\nVenue : " + venue + "\nDress Code : " + dressCode;
+    }
+    public String saveToFile()
+    {
+        return super.saveToFile() + venue + ";" + dressCode + ";" ;
+    }
+}
+
+//Main
+
 import java.io.*;
 import java.util.Scanner;
 import java.util.StringTokenizer;
